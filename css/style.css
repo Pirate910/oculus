@@ -185,8 +185,8 @@ body{
     color: #F6F4F5;
     padding: 20px 109px;
     text-transform: uppercase;
-    transition: all .30s ease-in-out;
     border: 1px solid var(--gradient, transparent);
+    transition: all .3s ease-in-out;
 }
 
 .buy-btn:has(.buy-btn__text:hover) {
@@ -476,6 +476,12 @@ body{
 
 .equipment__box-img{
     margin-bottom: 10px;
+    transition: all .30s ease-in-out;
+}
+
+.equipment__box-img:hover{
+    transform: scale(105%);
+    cursor: pointer;
 }
 
 .equipment__box-title{
