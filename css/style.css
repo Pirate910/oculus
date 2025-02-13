@@ -403,6 +403,15 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: auto;
+    transition: all .25s ease-in-out;
+}
+
+.game__item-link:hover{
+    background: rgba(217, 217, 217, 0.00);    background: var(--gradient, linear-gradient(180deg, #BC10D8 0%, rgba(80, 0, 250, 0.93) 100%));
+    border: none;
+    background-clip: border-box;
+    -webkit-background-clip: transparent;
+    -webkit-text-fill-color: #ede6ee;
 }
 
 .buy{
@@ -508,6 +517,11 @@ body{
     left: 0;
     right: 0;
     margin: 0 auto;
+    transition: all .15s ease-in-out;
+}
+
+.promo__btn:hover{
+    background: #5C5C5E;
 }
 
 .accessories{
@@ -578,6 +592,14 @@ body{
     padding: 6px;
     width: 100%;
     border: 1px solid var(--gradient, #BC10D8);
+    transition: all .25s ease-in-out;
+}
+
+.accessories__item-btn:hover{
+    background: rgba(217, 217, 217, 0.00);    background: var(--gradient, linear-gradient(180deg, #BC10D8 0%, rgba(80, 0, 250, 0.93) 100%));
+    background-clip: border-box;
+    -webkit-background-clip: transparent;
+    -webkit-text-fill-color: #ede6ee;
 }
 
 .contacts {
@@ -598,6 +620,14 @@ body{
 }
 .contacts__text {
     font-size: 13px;
+}
+
+.contacts__email{
+    transition: all .25s ease-in-out;
+}
+
+.contacts__email:hover{
+    color: #070707;
 }
 
 .form{
@@ -634,6 +664,12 @@ body{
     color: #5C5C5E;
     background-color: #CACAD6;
     border-radius: 50%;
+    transition: all .25s ease-in-out;
+}
+
+.form__btn:hover{
+    color: #CACAD6;
+    background-color: #5C5C5E;
 }
 
 .footer{
