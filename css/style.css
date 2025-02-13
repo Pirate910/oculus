@@ -80,7 +80,13 @@ body{
 }
 
 .header{
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    right: 0;
     border-bottom: 1px solid #CACAD6;
+    background-color: #F6F4F5;
 }
 
 .nav{
@@ -687,7 +693,7 @@ body{
 
 .favorites{
     position: fixed;
-    z-index: 99;
+    z-index: 150;
     top: 0;
     left: 0;
     right: 0;
