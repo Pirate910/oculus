@@ -836,6 +836,7 @@ body{
 
 .pay-form__products-total-text{
     color: #070707;
+    font-weight: 700;
 }
 
 .pay-form__products-total-price{

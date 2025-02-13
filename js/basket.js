@@ -30,31 +30,31 @@ updateBasket()
 export function renderPayFormFilter(totalNumOfProduct, payFromBlock, priceNumberLength, installmentAmount) {
     payFromBlock.innerHTML = `
         <div class="pay-form__filter">
-            <a href="#" class="pay-form__filter-btn pay-from__filter--active" data-filter='permanent'>Оплатить сразу</a>
-            <a href="#" class="pay-form__filter-btn" data-filter='installment'>Рассрочка</a>
+            <a href="#" class="pay-form__filter-btn pay-from__filter--active" data-filter='permanent'>Permanent</a>
+            <a href="#" class="pay-form__filter-btn" data-filter='installment'>Installment</a>
         </div>
         <div data-filter='permanent' class="pay-form__products-amount pay-form--unuqiue">
-            <div class="pay-form__products-text">${priceNumberLength} товара на сумму</div>
+            <div class="pay-form__products-text">${priceNumberLength} products</div>
             <div class="pay-form__products-price">${totalNumOfProduct} USD</div>
         </div>
         <div data-filter='permanent' class="pay-form__products-total-amount pay-form--unuqiue">
-            <div class="pay-form__products-total-text">Итого</div>
+            <div class="pay-form__products-total-text">Total</div>
             <div class="pay-form__products-total-price">${totalNumOfProduct} USD</div>
         </div>
 
         <div class="pay-form__products-amount pay-form--unuqiue payment-installments hide" data-filter='installment'>
-            <div class="pay-form__products-text">Полная стоимость</div>
+            <div class="pay-form__products-text">Cost</div>
             <div class="pay-form__products-price installment-details">${totalNumOfProduct} USD</div>
 
-            <div class="pay-form__products-text">Ежемесячный платеж</div>
+            <div class="pay-form__products-text">Monthly payment</div>
             <div class="pay-form__products-price installment-details">${installmentAmount} USD</div>
 
-            <div class="pay-form__products-text">Срок рассрочки</div>
-            <div class="pay-form__products-price installment-details">12 месяцев</div>
+            <div class="pay-form__products-text">Installment period</div>
+            <div class="pay-form__products-price installment-details">12 months</div>
         </div>
 
         <div class="pay-form__products-total-amount pay-form--unuqiue installment-summary hide" data-filter='installment'>
-            <div class="pay-form__products-total-text">Общая сумма к оплате:</div>
+            <div class="pay-form__products-total-text">Total:</div>
             <div class="pay-form__products-total-price installment-summary-total">${installmentAmount} USD × 12 мес = ${totalNumOfProduct} USD</div>
         </div>
 
