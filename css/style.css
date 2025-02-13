@@ -178,7 +178,7 @@ body{
     padding: 1px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .buy-btn__text{
@@ -250,7 +250,7 @@ body{
 .tabs__btn-item{
     font-weight: 700;
     padding-bottom: 20px;
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .tabs__btn-item:hover{
@@ -369,7 +369,7 @@ body{
     padding: 16px 15px 12px;
     text-align: center;
     width: 225px;
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .game__link:hover{
@@ -409,7 +409,7 @@ body{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-top: auto;
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .game__item-link:hover{
@@ -598,7 +598,7 @@ body{
     padding: 6px;
     width: 100%;
     border: 1px solid var(--gradient, #BC10D8);
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .accessories__item-btn:hover{
@@ -629,7 +629,7 @@ body{
 }
 
 .contacts__email{
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .contacts__email:hover{
@@ -670,7 +670,7 @@ body{
     color: #5C5C5E;
     background-color: #CACAD6;
     border-radius: 50%;
-    transition: all .25s ease-in-out;
+    transition: all .30s ease-in-out;
 }
 
 .form__btn:hover{
