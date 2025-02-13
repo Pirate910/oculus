@@ -64,6 +64,11 @@ img{
     font-weight: 400;
 }
 
+.menu__link:hover{
+    color: #000;
+    text-decoration: underline;
+}
+
 body{
     font-family: "Helvetica", sans-serif;
     font-weight: 400;
@@ -166,19 +171,38 @@ body{
     display: flex;
     padding: 1px;
     text-transform: uppercase;
-    padding: bottom;
+    margin-bottom: 10px;
+    transition: all .25s ease-in-out;
 }
 
 .buy-btn__text{
     color: #F6F4F5;
     padding: 20px 109px;
     text-transform: uppercase;
+    transition: all .30s ease-in-out;
+    border: 1px solid var(--gradient, transparent);
+}
+
+.buy-btn:has(.buy-btn__text:hover) {
+    background: var(--white, #F6F4F5);
+}
+
+.buy-btn__text:hover{
+    background: var(--gradient, linear-gradient(180deg, #BC10D8 0%, rgba(80, 0, 250, 0.93) 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 1px solid var(--gradient, #BC10D8);
 }
 
 .buy-btn__price{
     border: 1px solid var(--gradient, #BC10D8);
     background: #F6F4F5;
     padding: 20px 105px;
+}
+
+.buy-btn__price:hover{
+    color: #BC10D8;
 }
 
 .features{
@@ -220,6 +244,11 @@ body{
 .tabs__btn-item{
     font-weight: 700;
     padding-bottom: 20px;
+    transition: all .25s ease-in-out;
+}
+
+.tabs__btn-item:hover{
+    color: #070707;
 }
 
 .tabs__btn-item:last-child{
@@ -334,6 +363,15 @@ body{
     padding: 16px 15px 12px;
     text-align: center;
     width: 225px;
+    transition: all .25s ease-in-out;
+}
+
+.game__link:hover{
+    background: rgba(217, 217, 217, 0.00);    background: var(--gradient, linear-gradient(180deg, #BC10D8 0%, rgba(80, 0, 250, 0.93) 100%));
+    border: none;
+    background-clip: border-box;
+    -webkit-background-clip: transparent;
+    -webkit-text-fill-color: #ede6ee;
 }
 
 .game__item{
@@ -372,6 +410,7 @@ body{
     text-align: center;
     position: relative;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .buy .buy-btn{
@@ -646,10 +685,13 @@ body{
     margin-bottom: 20px;
 }
 
+.favorites-close-btn{
+    padding: 10px;
+}
+
 .favorites-close-btn::after{
     content: "";
     position: absolute;
-    top: 0px;
     right: 0;
     width: 24px;
     height: 2px;
@@ -660,7 +702,6 @@ body{
 .favorites-close-btn::before{
     content: "";
     position: absolute;
-    top: 0px;
     right: 0;
     width: 24px;
     height: 2px;
