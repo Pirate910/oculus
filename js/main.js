@@ -1,7 +1,9 @@
-import { handleAmountChange, updateBasket } from "./basket.js"
+import { handleAmountChange, updateBasket, displayBasketIndicator } from "./basket.js"
 
 const accessoriesList = document.querySelectorAll('.accessories__items .accessories__item')
 const choosedItems = document.querySelector('.chosed-list')
+
+displayBasketIndicator()
 
 let favListCards = JSON.parse(localStorage.getItem('favListCards')) || []
 if(favListCards.length == 0){
@@ -40,6 +42,8 @@ accessoriesList.forEach((item, id) => {
 
         renderFav(favListCards);
         updateBasket();
+        displayBasketIndicator()
+
 
     });
 
@@ -76,6 +80,8 @@ function renderFav(favList){
 
     deleteBtn()
     handleAmountChange()
+    displayBasketIndicator()
+
 
 }
 
@@ -92,10 +98,12 @@ function deleteBtn(){
             if(favListCards.length == 0){
                 choosedItems.innerHTML = `Empty bin`
                 updateBasket()
+                displayBasketIndicator()
             }else if(favListCards.length >= 1){
                 renderFav(favListCards)
                 updateBasket()
                 handleAmountChange()
+                displayBasketIndicator()
             }
         })
     });

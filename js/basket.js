@@ -11,12 +11,15 @@ export function updateBasket() {
 
     let totalPriceOfProducts = priceNumber.reduce((acc, cur) => acc + cur, 0);
     totalPriceOfProducts = Math.floor(totalPriceOfProducts * 100) / 100;
+
     let installmentAmount = parseFloat(totalPriceOfProducts / 12);
     installmentAmount = Math.floor((totalPriceOfProducts / 12) * 100) / 100;
+    
     installmentAmount = Math.floor(totalPriceOfProducts)
     localStorage.setItem('priceNumber', JSON.stringify(priceNumber));
 
     let totalNumOfProducts = basketCards.reduce((acc, item) => acc + item.amount, 0);
+    localStorage.setItem('totalNumOfProducts', JSON.stringify(totalNumOfProducts));
 
     if (basketCards.length === 0) {
         payFromBlock.innerHTML = `Empty bin`;
@@ -27,6 +30,13 @@ export function updateBasket() {
 }
 
 updateBasket()
+
+export function displayBasketIndicator(){
+    const basketIndicator = document.querySelector('.basket span')
+
+    let amountOfProducts = JSON.parse(localStorage.getItem('totalNumOfProducts')) || 0;
+    basketIndicator.innerHTML = amountOfProducts;
+}
 
 export function renderPayFormFilter(totalNumOfProducts, payFromBlock, totalPriceOfProducts, installmentAmount) {
     payFromBlock.innerHTML = `
@@ -84,6 +94,7 @@ export function handleAmountChange() {
             localStorage.setItem('favListCards', JSON.stringify(favListCards));
             amountDisplay.textContent = favListCards[itemId].amount;
             updateBasket();
+            displayBasketIndicator();
         });
     });
 }
