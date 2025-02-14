@@ -1,12 +1,10 @@
-import { handleAmountChange, renderPayFormFilter, updateBasket } from "./basket.js"
+import { handleAmountChange, updateBasket } from "./basket.js"
 
 const tabITem = document.querySelectorAll(".tabs__btn-item")
 const tabContent = document.querySelectorAll(".tabs__content-item")
 const favorites = document.querySelector('.favorites')
 const favoriteClose = document.querySelector('.favorites-close')
 const favoritesOpen = document.querySelector('.basket')
-
-console.log('asjkdlsajkdjl')
 
 function open(e){
     const tabTarget = e.currentTarget;

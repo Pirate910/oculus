@@ -1,5 +1,3 @@
-let currentAmountOfProducts = JSON.parse(localStorage.getItem('favListCards') || '0').length
-
 export function updateBasket() {
     const payFromBlock = document.querySelector(".pay-form__block");
     const basketCards = JSON.parse(localStorage.getItem('favListCards')) || [];
@@ -11,40 +9,43 @@ export function updateBasket() {
         priceNumber.push(arrNumber);
     }
 
-    let totalNumOfProduct = priceNumber.reduce((acc, cur) => acc + cur, 0);
-    let installmentAmount = parseFloat(totalNumOfProduct / 12);
+    let totalPriceOfProducts = priceNumber.reduce((acc, cur) => acc + cur, 0);
+    totalPriceOfProducts = Math.floor(totalPriceOfProducts * 100) / 100;
+    let installmentAmount = parseFloat(totalPriceOfProducts / 12);
+    installmentAmount = Math.floor((totalPriceOfProducts / 12) * 100) / 100;
+    installmentAmount = Math.floor(totalPriceOfProducts)
     localStorage.setItem('priceNumber', JSON.stringify(priceNumber));
 
-    let priceNumberLength = basketCards.reduce((acc, item) => acc + item.amount, 0);
+    let totalNumOfProducts = basketCards.reduce((acc, item) => acc + item.amount, 0);
 
     if (basketCards.length === 0) {
         payFromBlock.innerHTML = `Empty bin`;
     } else {
-        renderPayFormFilter(totalNumOfProduct, payFromBlock, priceNumberLength, installmentAmount);
+        renderPayFormFilter(totalNumOfProducts, payFromBlock, totalPriceOfProducts, installmentAmount);
         addPaymentFilterEvents();
     }
 }
 
 updateBasket()
 
-export function renderPayFormFilter(totalNumOfProduct, payFromBlock, priceNumberLength, installmentAmount) {
+export function renderPayFormFilter(totalNumOfProducts, payFromBlock, totalPriceOfProducts, installmentAmount) {
     payFromBlock.innerHTML = `
         <div class="pay-form__filter">
             <a href="#" class="pay-form__filter-btn pay-from__filter--active" data-filter='permanent'>Permanent</a>
             <a href="#" class="pay-form__filter-btn" data-filter='installment'>Installment</a>
         </div>
         <div data-filter='permanent' class="pay-form__products-amount pay-form--unuqiue">
-            <div class="pay-form__products-text">${priceNumberLength} products</div>
-            <div class="pay-form__products-price">${totalNumOfProduct} USD</div>
+            <div class="pay-form__products-text">${totalNumOfProducts} products</div>
+            <div class="pay-form__products-price">${totalPriceOfProducts} USD</div>
         </div>
         <div data-filter='permanent' class="pay-form__products-total-amount pay-form--unuqiue">
             <div class="pay-form__products-total-text">Total</div>
-            <div class="pay-form__products-total-price">${totalNumOfProduct} USD</div>
+            <div class="pay-form__products-total-price">${totalPriceOfProducts} USD</div>
         </div>
 
         <div class="pay-form__products-amount pay-form--unuqiue payment-installments hide" data-filter='installment'>
             <div class="pay-form__products-text">Cost</div>
-            <div class="pay-form__products-price installment-details">${totalNumOfProduct} USD</div>
+            <div class="pay-form__products-price installment-details">${totalPriceOfProducts} USD</div>
 
             <div class="pay-form__products-text">Monthly payment</div>
             <div class="pay-form__products-price installment-details">${installmentAmount} USD</div>
@@ -55,13 +56,11 @@ export function renderPayFormFilter(totalNumOfProduct, payFromBlock, priceNumber
 
         <div class="pay-form__products-total-amount pay-form--unuqiue installment-summary hide" data-filter='installment'>
             <div class="pay-form__products-total-text">Total:</div>
-            <div class="pay-form__products-total-price installment-summary-total">${installmentAmount} USD × 12 мес = ${totalNumOfProduct} USD</div>
+            <div class="pay-form__products-total-price installment-summary-total">${installmentAmount} USD × 12 мес = ${totalPriceOfProducts} USD</div>
         </div>
 
     `
 }
-
-let totalNumberOfAmount = []
 
 export function handleAmountChange() {
     let favoriteAmountBtns = document.querySelectorAll('.favorite__item-amount-operator');
@@ -82,16 +81,8 @@ export function handleAmountChange() {
                 favListCards[itemId].amount--;
             }
 
-            // Обновляем localStorage
             localStorage.setItem('favListCards', JSON.stringify(favListCards));
-            console.log(favListCards[itemId].amount)
-            // Обновляем UI
             amountDisplay.textContent = favListCards[itemId].amount;
-
-            // Пересчитываем общее количество товаров
-            totalNumberOfAmount = favListCards.reduce((acc, item) => acc + item.amount, 0);
-
-            currentAmountOfProducts = totalNumberOfAmount;
             updateBasket();
         });
     });
@@ -100,7 +91,7 @@ export function handleAmountChange() {
 
 function addPaymentFilterEvents() {
     const paymentFilterBtn = document.querySelectorAll('.pay-form__filter-btn')
-    const payFormBlock = document.querySelectorAll(".pay-form__block .pay-form--unuqiue");
+    const payFormContainer = document.querySelectorAll(".pay-form__block .pay-form--unuqiue");
 
     paymentFilterBtn.forEach(item => {
         
@@ -111,7 +102,7 @@ function addPaymentFilterEvents() {
 
             target.classList.add('pay-from__filter--active')
 
-            payFormBlock.forEach(block => {
+            payFormContainer.forEach(block => {
                 block.classList.add('hide')
                 if(block.getAttribute('data-filter') === target.getAttribute('data-filter')){
                     block.classList.remove('hide')
